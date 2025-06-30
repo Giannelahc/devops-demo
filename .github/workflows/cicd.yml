@@ -45,16 +45,16 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD}}
     - name: Build docker image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/demo-flask:latest .
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/demo-flask:v1 .
     
     - name: Push docker image
       run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/demo-flask:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/demo-flask:v1
 
     - name: Deploy to Azure Web app
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'demoflask'
         publish-profile: ${{secrets.AZURE_PUBLISH}}
-        images: '${{secrets.DOCKER_USERNAME}}/demo-flask:latest'
+        images: '${{secrets.DOCKER_USERNAME}}/demo-flask:v1'
 
