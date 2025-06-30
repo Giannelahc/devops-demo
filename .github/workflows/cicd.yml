@@ -54,7 +54,7 @@ jobs:
     - name: Deploy to Azure Web app
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'ddemoflask'
+        app-name: 'demoflask'
         publish-profile: ${{secrets.AZURE_PUBLISH}}
         images: '${{secrets.DOCKER_USERNAME}}/demo-flask:latest'
 
